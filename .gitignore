@@ -1,0 +1,4 @@
+# Office lock files and temporary files
+~$*
+*.tmp
+.DS_Store

@@ -1,0 +1,14 @@
+flowchart LR
+    DEV["Developer<br/>ADT in Eclipse"] -->|creates and activates| ABAP
+    subgraph ABAP["SAP BTP ABAP environment"]
+        direction TB
+        TAB[("Table<br/>zvkrap01_dt_demo")]
+        CLS["Class<br/>zcl_vkrap01_dt_demo_data"]
+        CDS["CDS view entities<br/>version 2, planned"]
+        CLS -->|MODIFY| TAB
+        CDS -->|SELECT FROM| TAB
+    end
+    DEV -->|F9 runs the class| CLS
+    DEV -->|F8 data preview| CDS
+    ABAP -.->|source files| GH["GitHub repository<br/>ABAPCDSCapstone"]
+    GH --> DOCS["docs<br/>UML, diagrams, scenarios"]

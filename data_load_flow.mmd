@@ -1,0 +1,12 @@
+flowchart TD
+    A["main( ) starts"] --> B["Collect rows of 7 groups<br/>rows_string, rows_arith, rows_cond,<br/>rows_date, rows_agg, rows_cast, rows_join"]
+    B --> C["DELETE FROM zvkrap01_dt_demo<br/>current client only"]
+    C --> D["MODIFY table FROM TABLE<br/>72 normal rows"]
+    D --> E{"More risky rows?<br/>510 and 901"}
+    E -->|yes| F["TRY: MODIFY one row"]
+    F -->|accepted| G["Print: row loaded"]
+    F -->|rejected| H["Print: row rejected and reason"]
+    G --> E
+    H --> E
+    E -->|no| I["SELECT COUNT( * )"]
+    I --> J["Print: rows now in the table"]

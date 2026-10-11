@@ -1,0 +1,62 @@
+@EndUserText.label : 'CDS demo - data types (Type Tour)'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table zvkrap01_dt_demo {
+
+  key client : abap.clnt not null;
+  key rec_id : abap.int4 not null;
+  case_desc  : abap.char(60);
+
+  " numbers
+  t_int1     : abap.int1;
+  t_int2     : abap.int2;
+  t_int4     : abap.int4;
+  t_int8     : abap.int8;
+  t_dec      : abap.dec(15,3);
+  t_dec2     : abap.dec(9,2);
+  t_df16     : abap.decfloat16;
+  t_df34     : abap.decfloat34;
+  t_fltp     : abap.fltp;
+
+  " characters
+  t_char1    : abap.char(1);
+  t_char3    : abap.char(3);
+  t_char5    : abap.char(5);
+  t_char6    : abap.char(6);
+  t_char8    : abap.char(8);
+  t_char10   : abap.char(10);
+  t_char30   : abap.char(30);
+  t_sstr     : abap.sstring(60);
+  t_str      : abap.string(0);
+
+  " numeric text
+  t_numc4    : abap.numc(4);
+  t_numc6    : abap.numc(6);
+  t_numc8    : abap.numc(8);
+  t_numc10   : abap.numc(10);
+  t_numc14   : abap.numc(14);
+
+  " date and time
+  t_dats     : abap.dats;
+  t_datn     : abap.datn;
+  t_tims     : abap.tims;
+  t_timn     : abap.timn;
+  t_utc      : abap.utclong;
+  t_tstmp    : abap.dec(15,0);
+  t_tstmpl   : abap.dec(21,7);
+  t_tzone    : abap.char(6);
+  t_accp     : abap.accp;
+
+  " special types
+  t_lang     : abap.lang;
+  t_cuky     : abap.cuky;
+  @Semantics.amount.currencyCode : 'zvkrap01_dt_demo.t_cuky'
+  t_curr     : abap.curr(9,2);
+  t_unit     : abap.unit(3);
+  @Semantics.quantity.unitOfMeasure : 'zvkrap01_dt_demo.t_unit'
+  t_quan     : abap.quan(9,3);
+  t_raw      : abap.raw(8);
+
+}

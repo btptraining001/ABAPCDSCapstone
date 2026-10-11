@@ -1,0 +1,18 @@
+sequenceDiagram
+    actor Dev as Developer
+    participant ADT as ADT console
+    participant Cls as zcl_vkrap01_dt_demo_data
+    participant DB as zvkrap01_dt_demo
+    Dev->>ADT: Run as ABAP Application
+    ADT->>Cls: if_oo_adt_classrun~main
+    Cls->>Cls: build rows of all groups
+    Cls->>DB: DELETE FROM
+    Cls->>DB: MODIFY FROM TABLE
+    loop each risky row
+        Cls->>DB: MODIFY one row inside TRY
+        DB-->>Cls: accepted or exception
+    end
+    Cls->>DB: SELECT COUNT
+    DB-->>Cls: number of rows
+    Cls-->>ADT: out->write
+    ADT-->>Dev: console output
